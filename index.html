@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VapeShop</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>VapeShop</h1>
+    <nav>
+      <ul>
+        <li><a href="#cigs">Сигареты</a></li>
+        <li><a href="#vapes">Вейпы</a></li>
+        <li><a href="#lighters">Зажигалки</a></li>
+        <li><a href="#contact">Контакты</a></li>
+        <li><button id="open-cart">🛒 Корзина</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="cigs">
+      <h2>Сигареты</h2>
+      <div class="product">
+        <h3>Marlboro Gold</h3>
+        <p>Цена: 250₽</p>
+        <button onclick="addToCart('Marlboro Gold', 250)">В корзину</button>
+      </div>
+    </section>
+
+    <section id="vapes">
+      <h2>Вейпы</h2>
+      <div class="product">
+        <h3>HQD Cuvie Plus</h3>
+        <p>Цена: 900₽</p>
+        <button onclick="addToCart('HQD Cuvie Plus', 900)">В корзину</button>
+      </div>
+    </section>
+
+    <section id="lighters">
+      <h2>Зажигалки</h2>
+      <div class="product">
+        <h3>Zippo Classic</h3>
+        <p>Цена: 1200₽</p>
+        <button onclick="addToCart('Zippo Classic', 1200)">В корзину</button>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Контакты / Заказ</h2>
+      <p>Telegram: @vape_shop</p>
+      <p>Email: vapes@example.com</p>
+    </section>
+  </main>
+
+  <aside id="cart" class="hidden">
+    <h2>Корзина</h2>
+    <ul id="cart-items"></ul>
+    <p><strong>Итого: <span id="total">0</span>₽</strong></p>
+
+    <form id="order-form">
+      <input type="text" id="username" placeholder="Ваш Telegram (@username)" required />
+      <input type="text" id="name" placeholder="Ваше имя" required />
+    </form>
+
+    <button onclick="clearCart()">Очистить</button>
+    <button onclick="checkout()">Оформить заказ</button>
+  </aside>
+
+  <footer>
+    <p>&copy; 2025 VapeShop</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
