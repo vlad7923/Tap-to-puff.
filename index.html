@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tap to Puff</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: url('https://i.ibb.co/N2PC88k/tap-to-puff-ui.png') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      margin-top: 60vh;
+    }
+    .counter {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .btn {
+      font-size: 24px;
+      padding: 10px 30px;
+      background-color: #ff914d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="counter">Puffs: <span id="puffs">0</span></div>
+    <button class="btn" onclick="tap()">TAP TO PUFF</button>
+  </div>
+
+  <script>
+    let puffs = parseInt(localStorage.getItem('puffs') || 0);
+    function update() {
+      document.getElementById('puffs').innerText = puffs;
+    }
+    function tap() {
+      puffs += 1;
+      localStorage.setItem('puffs', puffs);
+      update();
+    }
+    update();
+  </script>
+</body>
+</html>
