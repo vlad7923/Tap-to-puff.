@@ -50,8 +50,8 @@ function checkout() {
   const total = cart.reduce((sum, item) => sum + item.price, 0);
   const fullMessage = `🛒 Новый заказ:\n\n${message}\n\nИтого: ${total}₽\n\n👤 Имя: ${name}\n📱 Telegram: ${username}`;
 
-  const botToken = 'ТВОЙ_ТОКЕН';
-  const chatId = 'ТВОЙ_CHAT_ID';
+  const botToken = '8036268451:AAHRqsq-VKxVjKff2I2JrmSGR-mLTcuyLts';
+  const chatId = '1002520560909';
 
   fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
     method: 'POST',
