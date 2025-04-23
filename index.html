@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tap to Puff</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #7209b7, #f72585);
+      color: white;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .vape {
+      width: 150px;
+      margin: 20px auto;
+    }
+    .btn-tap {
+      font-size: 24px;
+      padding: 15px 30px;
+      background: #4361ee;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .counter {
+      font-size: 32px;
+      margin: 20px 0;
+    }
+    .upgrades {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .upgrade {
+      background: #3a0ca3;
+      padding: 15px;
+      border-radius: 10px;
+      width: 120px;
+    }
+    .upgrade button {
+      margin-top: 10px;
+      padding: 5px;
+      background: #4895ef;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tap to Puff</h1>
+  <img src="https://i.ibb.co/gVm5rPJ/vape.png" alt="vape" class="vape">
+  <div class="counter">Пар: <span id="puffs">0</span></div>
+  <button class="btn-tap" onclick="addPuff()">TAP TO PUFF</button>
+
+  <div class="upgrades">
+    <div class="upgrade">
+      <div>Battery</div>
+      <div>+1 пар</div>
+      <div>Цена: 100</div>
+      <button onclick="buyUpgrade(1, 100)">Купить</button>
+    </div>
+    <div class="upgrade">
+      <div>Coil</div>
+      <div>+5 пар</div>
+      <div>Цена: 500</div>
+      <button onclick="buyUpgrade(5, 500)">Купить</button>
+    </div>
+    <div class="upgrade">
+      <div>Cloud</div>
+      <div>+10 пар</div>
+      <div>Цена: 2000</div>
+      <button onclick="buyUpgrade(10, 2000)">Купить</button>
+    </div>
+  </div>
+
+  <script>
+    let puffs = parseInt(localStorage.getItem('puffs') || 0);
+    let perClick = parseInt(localStorage.getItem('perClick') || 1);
+
+    function updateDisplay() {
+      document.getElementById('puffs').innerText = puffs;
+    }
+
+    function addPuff() {
+      puffs += perClick;
+      localStorage.setItem('puffs', puffs);
+      updateDisplay();
+    }
+
+    function buyUpgrade(bonus, cost) {
+      if (puffs >= cost) {
+        puffs -= cost;
+        perClick += bonus;
+        localStorage.setItem('puffs', puffs);
+        localStorage.setItem('perClick', perClick);
+        updateDisplay();
+      } else {
+        alert('Недостаточно пара!');
+      }
+    }
+
+    updateDisplay();
+  </script>
+</body>
+</html>
